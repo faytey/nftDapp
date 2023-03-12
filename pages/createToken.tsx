@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import React, { SyntheticEvent, useState } from "react";
+import React, { ChangeEventHandler, SyntheticEvent, useState } from "react";
 import {
   Address,
   useAccount,
@@ -82,11 +82,16 @@ const CreateToken: NextPage = () => {
               className="ring-1 ring-blue-800 rounded-lg p-2"
               type="text"
               placeholder="Input Token URI (CID) Here"
-              onChange={(e: HTMLInputElement) => setTokenURI(e.target.value)}
+              onChange={(e: ChangeEventHandler<HTMLInputElement>) =>
+                setTokenURI(e.target.value)
+              }
             />{" "}
           </div>
           <br />
-          <button type="submit" className="mt-3 bg-blue-800 p-3 rounded-lg text-white">
+          <button
+            type="submit"
+            className="mt-3 bg-blue-800 p-3 rounded-lg text-white"
+          >
             {writeLoading || waitLoading ? "Sending" : "Send"}
           </button>
         </form>
